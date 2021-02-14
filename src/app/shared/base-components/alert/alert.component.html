@@ -1,0 +1,16 @@
+<h1>{{ alertData.title }}</h1>
+<div *ngFor="let text of alertData.text">
+  <p> {{ text }} </p>
+</div>
+<div *ngIf="!alertData.type">
+  <button class="btn btn-secondary btn-sm" type="button" (click)="onClose()"> Close</button>
+</div>
+
+<div *ngIf="alertData.type === 'confirmation'" class="row justify-content-md-center">
+  <div class="col col-lg-2 alert-cancel">
+    <button class="btn btn-danger btn-sm" type="button" (click)="onConfirmation(false)">Cancel</button>
+  </div>
+  <div class="col col-lg-2 alert-submit">
+    <button class="btn btn-primary btn-sm" type="button" (click)="onConfirmation(true)">Submit</button>
+  </div>
+</div>
