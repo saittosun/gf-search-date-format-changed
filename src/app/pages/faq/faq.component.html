@@ -2,7 +2,51 @@
   <app-loading-spinner></app-loading-spinner>
 </div>
 
+<!-- <div *ngIf="data" class="container mt-4" [ngClass]="{ transparent: isLoading }">
+  <h1 class="font-weight-bold text-center">Frequently Asked Questions</h1>
+  <div *ngFor="let faq of data; let i=index">
+    <div >
+      <mat-accordion *ngIf="faqArray[i]" >
+        <mat-expansion-panel  (opened)="faqArray[i] = true">
+          <mat-expansion-panel-header *ngFor="let answer of faq.body"  >
+            <mat-panel-title>
+            {{faq.title}}
+            </mat-panel-title>
+            <mat-panel-description *ngIf="answer.tag === 'header'">
+              {{ answer.element }}
+            </mat-panel-description>
+            <p *ngIf="answer.tag === 'paragraph'">{{ answer.element }}</p>
+            <li *ngIf="answer.tag === 'listItem'">{{ answer.element }}</li>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div> -->
+
 <div *ngIf="data" class="container mt-4" [ngClass]="{ transparent: isLoading }">
+  <h1 class="font-weight-bold text-center">Frequently Asked Questions</h1>
+  <mat-accordion *ngFor="let faq of data; let i=index">
+    <mat-expansion-panel style="margin-bottom: 1rem;" class="font-weight-bold" (click)="onFaqClick(i)">
+      <!-- <span *ngIf="faqArray[i]"  class="material-icons faq-icon">remove_circle_outline </span>
+      <span *ngIf="!faqArray[i]" class="material-icons faq-icon">add_circle_outline</span> -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ faq.title }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="faqArray[i]" class="faq-answer">
+        <div *ngFor="let answer of faq.body">
+          <h4 class="font-weight-bold" *ngIf="answer.tag === 'header'">{{ answer.element }}</h4>
+          <p *ngIf="answer.tag === 'paragraph'">{{ answer.element }}</p>
+          <li *ngIf="answer.tag === 'listItem'">{{ answer.element }}</li>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<!-- <div *ngIf="data" class="container mt-4" [ngClass]="{ transparent: isLoading }">
   <h1 class="font-weight-bold text-center">Frequently Asked Questions</h1>
   <div *ngFor="let faq of data; let i=index">
     <div class="font-weight-bold faq-title " (click)="onFaqClick(i)">
@@ -21,7 +65,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div  *ngIf="errorMessage">
   <br />

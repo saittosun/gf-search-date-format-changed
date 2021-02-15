@@ -18,6 +18,7 @@ export class FaqComponent implements OnInit {
   isLoading = false;
   faqArray: boolean[] = [];
   user: User;
+  panelOpenState = false;
 
   constructor(
     private databaseHandlerService: DatabaseHandlerService,
