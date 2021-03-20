@@ -23,35 +23,37 @@
     <p class="error-message mt-5 mb-5">{{ errorMessage }}</p>
   </div>
 
-  <mat-grid-list
-    [cols]="breakpoint"
-    rowHeight="2:3"
-    (window:resize)="onResize($event)"
-  >
-    <mat-grid-tile *ngFor="let blog of blogs" style="height: 900px">
-      <div>
-        <button
-          *ngIf="user && user.role === 'Admin'"
-          class="btn btn-block btn-outline-danger"
-          (click)="onBlogDelete(blog.id)"
-        >
-          Delete Blog
-        </button>
-        <div class="btn" (click)="onBlogClick(blog.id)">
-          <img
-            src="{{ blog.imageUrl }}"
-            alt="image"
-            style="height: 480px; width: 640px"
-          />
-          <div class="grid-list-item">
-            <h2>{{ blog.title }}</h2>
-            <p>{{ blog.summary }}</p>
-            <p class="font-weight-bold">{{ blog.date | date }}</p>
-          </div>
+
+
+<mat-grid-list
+  [cols]="breakpoint"
+  rowHeight="2:3"
+  (window:resize)="onResize($event)"
+>
+  <mat-grid-tile *ngFor="let blog of blogs" style="height: 900px">
+    <div>
+      <!-- <button
+        *ngIf="user && user.role === 'Admin'"
+        class="btn btn-block btn-outline-danger"
+        (click)="onBlogDelete(blog.id)"
+      >
+        Delete Blog
+      </button> -->
+      <div class="btn" (click)="onBlogClick(blog.id)">
+        <img
+          src="{{ blog.imageUrl }}"
+          alt="image"
+          style="height: 480px; width: 640px"
+        />
+        <div class="grid-list-item">
+          <h2>{{ blog.title }}</h2>
+          <p>{{ blog.summary }}</p>
+          <p class="font-weight-bold">{{ blog.date | date }}</p>
         </div>
       </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
 
   <mat-paginator
     (page)="handlePageEvent($event)"

@@ -13,7 +13,7 @@ export class DropdownDirective {
    this.isOpen = !this.isOpen;
    this.wasInside = true;
  }
- 
+
  @HostListener("document:click") clickout() {
    if (!this.wasInside) {
      this.isOpen = false;

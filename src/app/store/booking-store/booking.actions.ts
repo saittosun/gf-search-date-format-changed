@@ -24,6 +24,7 @@ export class ResetBookingPhasesParams implements Action {
   ) {}
 }
 
+
 export class UpdateSearchPhaseModel implements Action {
   readonly type = UPDATE_SEARCH_PHASE_MODEL;
   constructor(
